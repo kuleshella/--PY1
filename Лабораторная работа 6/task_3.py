@@ -3,18 +3,10 @@ OUTPUT_FILE = "output.csv"
 
 def to_csv_file(filename, headers, rows, delimiter=',', new_line='\n'):
     with open(filename, mode='w') as output:
-        for i in range(len(headers)):
-            output.write(headers[i])
-            if i != len(headers) - 1:
-                output.write(delimiter)
-        output.write(new_line)
-
+        output.write(delimiter.join(headers))
         for row in rows:
-            for i in range(len(row)):
-                output.write(row[i])
-                if i != len(row) - 1:
-                    output.write(delimiter)
             output.write(new_line)
+            output.write(delimiter.join(row))
 
 
 headers_list = ['longitude', 'latitude', 'housing_median_age', 'total_rooms', 'total_bedrooms', 'population', 'households', 'median_income', 'median_house_value']
